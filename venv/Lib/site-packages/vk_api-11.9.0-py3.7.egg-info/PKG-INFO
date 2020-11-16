@@ -1,0 +1,46 @@
+Metadata-Version: 2.1
+Name: vk-api
+Version: 11.9.0
+Summary: Python модуль для создания скриптов для социальной сети Вконтакте (vk.com API wrapper)
+Home-page: https://github.com/python273/vk_api
+Author: python273
+Author-email: vk_api@python273.pw
+License: Apache License, Version 2.0, see LICENSE file
+Download-URL: https://github.com/python273/vk_api/archive/v11.9.0.zip
+Description: vk_api [![PyPI](https://img.shields.io/pypi/v/vk_api.svg)](https://pypi.org/project/vk_api/) ![Python 3.6, 3.7, 3.8](https://img.shields.io/pypi/pyversions/vk_api.svg) [![Telegram Chat](https://img.shields.io/badge/-Telegram%20Chat-green?logo=telegram&color=27A7E5)](https://t.me/python273_vk_api)
+        =================================================================================================================================================================================
+        **vk_api** – Python модуль для создания скриптов для социальной сети Вконтакте (vk.com API wrapper)
+        
+        * [Документация](https://vk-api.readthedocs.io/en/latest/)
+        * [Примеры использования](./examples) (python3)
+        * [Документация по методам API](https://vk.com/dev/methods)
+        * [Альтернативы vk_api](https://github.com/python273/vk_api/issues/356) (асинхронность; боты)
+        
+        ```python
+        import vk_api
+        
+        vk_session = vk_api.VkApi('+71234567890', 'mypassword')
+        vk_session.auth()
+        
+        vk = vk_session.get_api()
+        
+        print(vk.wall.post(message='Hello world!'))
+        ```
+        
+        Установка
+        ------------
+            $ pip3 install vk_api
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Description-Content-Type: text/markdown
+Provides-Extra: vkstreaming
+Provides-Extra: vkaudio

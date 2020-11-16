@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: cipher
+Version: 0.1
+Summary: encryption message and decryption message
+Home-page: https://github.com/FrankQiang/cipher
+Author: Quintin
+Author-email: quintinqiang@gmail.com
+License: UNKNOWN
+Description: UNKNOWN
+Keywords: encryption and decryption
+Platform: UNKNOWN
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6

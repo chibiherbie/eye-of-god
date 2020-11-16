@@ -1,0 +1,11 @@
+requests
+six
+
+[:python_version < "3.4"]
+enum34
+
+[vkaudio]
+beautifulsoup4
+
+[vkstreaming]
+websocket-client
