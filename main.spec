@@ -4,9 +4,9 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['D:\\test'],
+             pathex=['D:\\project\\eye-of-god'],
              binaries=[],
-             datas=[],
+             datas=[('Rex.ttf', '.')],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
@@ -18,16 +18,17 @@ a = Analysis(['main.py'],
 pyz = PYZ(a.pure, a.zipped_data,
              cipher=block_cipher)
 exe = EXE(pyz,
+          Tree('data', prefix='data'),
           a.scripts,
           a.binaries,
           a.zipfiles,
           a.datas,
           [],
-          name='main',
+          name='eye of god',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False , icon='img\\icon.ico')
+          console=False, icon='D:\project\eye-of-god\img\icon.ico', )

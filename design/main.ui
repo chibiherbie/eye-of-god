@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1274</width>
-    <height>577</height>
+    <height>601</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -43,10 +43,10 @@
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout" rowminimumheight="0,0">
       <property name="leftMargin">
-       <number>5</number>
+       <number>15</number>
       </property>
       <property name="rightMargin">
-       <number>5</number>
+       <number>15</number>
       </property>
       <property name="verticalSpacing">
        <number>6</number>
@@ -139,7 +139,7 @@ padding-right: auto;</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Proxima Nova'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:' Proxima Nova';&quot;&gt;Поиск по номеру телефона поможет найти информацию о человеке, которая на данный момент имеется в нашей базе&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Возможные имена&lt;/span&gt; - то, как записан человек у других людей&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;ФИО&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Социальные сети&lt;/span&gt; - ВК, Facebook, Instagram будут предоставлены в поиск, если на данный момет они есть в базе по данному номеру&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:' Proxima Nova';&quot;&gt;Поиск по номеру телефона поможет найти информацию о человеке, которая на данный момент имеется в нашей базе&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-family:' Proxima Nova'; text-decoration: underline;&quot;&gt;В РАЗРАБОТКЕ&lt;/span&gt;&lt;span style=&quot; font-family:' Proxima Nova';&quot;&gt;&lt;br /&gt;-------&lt;br /&gt;&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Возможные имена&lt;/span&gt; - то, как записан человек у других людей&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;ФИО&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Социальные сети&lt;/span&gt; - ВК, Facebook, Instagram будут предоставлены в поиск, если на данный момет они есть в базе по данному номеру&lt;br /&gt;&lt;span style=&quot; font-family:' Proxima Nova';&quot;&gt;-------&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="overwriteMode">
              <bool>false</bool>
@@ -204,11 +204,7 @@ padding-right: auto;</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Proxima Nova'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Так же, как и при поиске по номеру телефона,&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;поиск по Email предоставит имеющуюся&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;информацию по вашей почте - социальные&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;сети, возможные имена, ФИО, пароли, номер&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;телефона и др&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Поиск по Email предоставит пароль, если он имеется в гашей базе данных&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Для поиска отправьте имеющуюся у вас почту&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;для получения информации&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -267,13 +263,7 @@ padding-right: auto;</string>
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Proxima Nova'; font-size:10pt;&quot;&gt;Для данного поиска по ФИО отправьте&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Proxima Nova'; font-size:10pt;&quot;&gt;Фамилию Имя Отчество человека, номер&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Proxima Nova'; font-size:10pt;&quot;&gt;телефона которого нужно найти&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Proxima Nova'; font-size:10pt;&quot;&gt;Если за данным ФИО в базе будет закреплен&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Proxima Nova'; font-size:10pt;&quot;&gt;номер телефона человека, то будет получен&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Proxima Nova'; font-size:10pt;&quot;&gt;результат поиска со списком всех номеров&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Proxima Nova'; font-size:10pt;&quot;&gt;телефона.&lt;br /&gt;&lt;br /&gt;Если у вас нет полного ФИО или не точные данные - Вы моежете воспользоваться поиском по базе &amp;quot;вомзожных имён&amp;quot;&lt;br /&gt;&lt;br /&gt;Для поиска отправьте имеющиеся данные. Имя, фамилию или отчество&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Proxima Nova'; font-size:10pt;&quot;&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;СКОРО&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="placeholderText">
              <string/>

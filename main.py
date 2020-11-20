@@ -2,20 +2,19 @@ import sys
 
 from PyQt5 import uic, QtCore, QtWidgets, QtMultimedia
 from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QStatusBar,\
-    QTableWidgetItem, QMessageBox, QWidget, QLabel, QAction, QDesktopWidget, QVBoxLayout
+    QTableWidgetItem, QMessageBox, QWidget, QLabel, QAction, QDesktopWidget
 from PyQt5.QtCore import Qt, QTimer, QThread, pyqtSignal
 from PyQt5.QtGui import QPixmap, QColor
 
 import webbrowser
 import vk_api
 from datetime import datetime
+import os
 
 import search_phone
 import search_photo
 import search_email
 import config
-
-print('asd')
 
 
 ##########################
