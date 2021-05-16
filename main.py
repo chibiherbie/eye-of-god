@@ -309,7 +309,7 @@ class SettingsForm(CommonProperties):
 
 
 ##########################
-# обраятная связь
+# обратная связь
 ##########################
 class FeedbackForm(CommonProperties):
     def __init__(self):
@@ -329,14 +329,14 @@ class FeedbackForm(CommonProperties):
             self.statusBar.showMessage('')  # чистим статус бар
 
             # подключаемся к вк
-            vk_session = vk_api.VkApi(token=config.VK_TOKEN)
+            vk_session = vk_api.VkApi(token=config.VK_GROUP)
             vk = vk_session.get_api()
 
             # собираем сообщение
             m = f'Имя:{self.edit_name.text()}\n\nДата-время: {datetime.now()}\n\n сообщение\n' \
                 f'--------------------\n{self.edit_msg.toPlainText()}\n--------------------'
 
-            vk.messages.send(chat_id='215', message=m, random_id=0)  # оправляем сообщение
+            vk.messages.send(user_id=config.MY_ID, message=m, random_id=0)  # оправляем сообщение
 
             self.close()  # закрываем окно
 

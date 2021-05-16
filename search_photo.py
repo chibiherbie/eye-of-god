@@ -137,11 +137,11 @@ def rechecking_photo(list_data, ProgressBarThread):
 
 
 # поиск дескриптера лица
-def face_descriptor(pic):
+def face_descriptor(pic, path=''):
     # Для выделения на фото лица
-    sp = dlib.shape_predictor('models/shape_predictor_68_face_landmarks.dat')
+    sp = dlib.shape_predictor(path + 'models/shape_predictor_68_face_landmarks.dat')
     # для выделения дискриптеров
-    facerec = dlib.face_recognition_model_v1('models/dlib_face_recognition_resnet_model_v1.dat')
+    facerec = dlib.face_recognition_model_v1(path + 'models/dlib_face_recognition_resnet_model_v1.dat')
 
     try:
         img = io.imread(pic)  # считываем картинку

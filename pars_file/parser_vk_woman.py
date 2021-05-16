@@ -19,14 +19,14 @@ def pars_foto():
     # vk.messages.send(user_id=my_id, message='sds', random_id=0)
 
     # данные для парсинга
-    age = 16  # возраст от и до людей которых надо спарсить
-    age_max = 16
+    age = 19  # возраст от и до людей которых надо спарсить
+    age_max = 19
     city_number = 73  # Номер города
     gender = 1  # пол: 1 - девушки, 2 - парни
 
     # Перебор возрастов
     while age <= age_max:
-        day = 16
+        day = 1
 
         # Перебор месяцев рождения
         while day <= 31:
@@ -48,7 +48,7 @@ def pars_foto():
 
             # записываем информацию о кол-во людей
             print('Кол-во людей: ' + str(data_users['count']))
-            with open('logs/logs_woman.txt', 'w', encoding='utf8') as f:
+            with open('../logs/logs_woman.txt', 'w', encoding='utf8') as f:
                 f.write(f'Возраст {str(age)}, День рожедния {str(day)}\n'
                         f'Кол-во людей: {str(data_users["count"])}\n')
 
@@ -59,7 +59,7 @@ def pars_foto():
                 # есть ли фото на аве. также проверка из логов, если тако таой id в бд
                 if item_users['has_photo'] == 1 and str(item_users['id']) not in file_id:
 
-                    with open('logs/logs_woman.txt', 'a', encoding='utf8') as f:  # записываем id странички
+                    with open('../logs/logs_woman.txt', 'a', encoding='utf8') as f:  # записываем id странички
                         f.write(str(item_users['id']) + '\n')
 
                     if not item_users['is_closed']:  # закрыт ли профиль
@@ -70,9 +70,9 @@ def pars_foto():
                     # если закрыт, то качаем аватарку
                     else:
                         download_photo(item_users['photo_max_orig'], item_users['id'])  # качаем фото для анализа
-                        data_descriptor = face_descriptor(f'pars_img/{item_users["id"]}.jpg')  # анализируем
+                        data_descriptor = face_descriptor(f'../pars_img/{item_users["id"]}.jpg', '../')  # анализируем
 
-                        os.remove(f'pars_img/{item_users["id"]}.jpg')  # удаляем фото
+                        os.remove(f'../pars_img/{item_users["id"]}.jpg')  # удаляем фото
 
                         url = [item_users['photo_max_orig']]  # добовляем ссылку
 
@@ -105,7 +105,7 @@ def photos_id(id):
 
                     # скачиваем фото и передаем для анализа лица
                     photo = download_photo(str(size['url']), id)
-                    descriptor = face_descriptor(photo)
+                    descriptor = face_descriptor(photo, '../')
 
                     # удаляем фотку
                     os.remove(photo)
@@ -127,12 +127,12 @@ def photos_id(id):
 def download_photo(url, name):
     try:
         r = requests.get(url, stream=True)  # делаем запрос
-        with open('pars_img/' + str(name) + '.jpg', 'wb') as f:
+        with open('../pars_img/' + str(name) + '.jpg', 'wb') as f:
             time.sleep(0.5)  # ожидаем загрузки
             r.raw.decode_content = True
             shutil.copyfileobj(r.raw, f)
 
-        return f'pars_img/{name}.jpg'  # возвращаем путь до фото
+        return f'../pars_img/{name}.jpg'  # возвращаем путь до фото
 
     except Exception as e:
         print(e)
@@ -141,9 +141,9 @@ def download_photo(url, name):
 # записываем данные в бд
 def users_add_db(id_users, name, data):
     # подключаемся
-    con = sqlite3.connect('data/photo/vk_krasnoyarsk.db', detect_types=sqlite3.PARSE_DECLTYPES)
+    con = sqlite3.connect('../data/photo/vk_krasnoyarsk.db', detect_types=sqlite3.PARSE_DECLTYPES)
     cur = con.cursor()
-
+    print(id_users)
     cur.execute('''INSERT INTO users_woman(id_user, name, data, url_foto) VALUES (?, ?, ?, ?)''',
                 (id_users, name, json.dumps(np.array(data).tolist()), json.dumps(np.array(url).tolist())))
     con.commit()
@@ -155,7 +155,7 @@ if __name__ == '__main__':
     vk = vk_session.get_api()
 
     # при ошибки берём id польователей, которых записывали до ошибки, чтобы потом проверять, есть ли они в бд
-    with open('logs/logs_woman — копия.txt', 'r') as f:
+    with open('../logs/logs_woman — копия.txt', 'r') as f:
         file_id = f.read().split('\n')
 
     pars_foto()

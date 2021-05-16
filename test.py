@@ -118,3 +118,24 @@
 #     executor.start_polling(dp, skip_updates=True)
 
 
+import vk_api
+from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
+from vk_api.longpoll import VkLongPoll
+import random
+import config
+
+TOKEN = 'b112dcb9a83b06861a748a1469f2ed660929dc66edbe2b3be2fc89893a80616cf953665040ec90f81385d'
+
+def main():
+    vk_session = vk_api.VkApi(
+        token=TOKEN)
+
+
+    vk = vk_session.get_api()
+    vk.messages.send(user_id=config.MY_ID,
+                     message="Спасибо, что написали нам. Мы обязательно ответим",
+                     random_id=random.randint(0, 2 ** 64))
+
+
+if __name__ == '__main__':
+    main()

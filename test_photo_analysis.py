@@ -9,7 +9,7 @@ facerec = dlib.face_recognition_model_v1('models/dlib_face_recognition_resnet_mo
 
 detector = dlib.get_frontal_face_detector()
 
-img = io.imread('test_foto/4.jpg')  # считываем картинку
+img = io.imread('test_foto/15.jpg')  # считываем картинку
 dets = detector(img, 1)
 print(dets)
 a = str(dets[0])
@@ -42,7 +42,7 @@ for d in dets:
 # извлекаем дискриптер
 face_descriptor1 = facerec.compute_face_descriptor(img, shape)
 
-img = io.imread('test_foto/10.jpg')
+img = io.imread('test_foto/15.jpg')
 
 # win1 = dlib.image_window()
 # win1.clear_overlay()
@@ -64,7 +64,7 @@ try:
             l = distance.euclidean(face_descriptor1, face_descriptor2)
             if l < 0.53:
                 print('Это ты')
-                cv2.putText(img, 'Unknow', (int(a[2:5]), int(a[7:10]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255),
+                cv2.putText(img, 'face', (int(a[2:5]), int(a[7:10]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255),
                             3)
                 win1 = dlib.image_window()
                 win1.clear_overlay()
@@ -74,7 +74,7 @@ try:
                 win1.wait_for_keypress('q')
             else:
                 print('не ты')
-                cv2.putText(img, 'Unknown', (int(a[2:5]), int(a[7:10]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255),
+                cv2.putText(img, 'face', (int(a[2:5]), int(a[7:10]) - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (0, 0, 255),
                             3)
                 win1 = dlib.image_window()
                 win1.set_image(img)
