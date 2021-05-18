@@ -187,20 +187,17 @@ class Notification(QMainWindow):
 
 
 ##########################
-# общии свойста для остальных окон
+# общие свойста для остальных окон
 ##########################
 class CommonProperties(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # заружаем настройки
-        with open('logs/settings.txt') as f:
-            settings = [int(i) for i in f.read().split(';')]
+        # созадём переменные для настроек
+        self.volume, self.push_notification, self.sound_notification = 0, 0, 0
 
-        # запоминаем настройки
-        self.volume = settings[0]
-        self.push_notification = any([settings[1]])
-        self.sound_notification = any([settings[2]])
+        # заружаем настройки
+        self.check_settings()
 
         # загрузка звукового уведомления
         media = QtCore.QUrl.fromLocalFile('D:/test/sound/alert.mp3')
@@ -210,9 +207,9 @@ class CommonProperties(QMainWindow):
 
         # стиль кнопки
         self.btn_design = 'QPushButton {background-color: {COLOR};color:' \
-                                      ' black;border-radius: 9px;height: 22px;} QPushButton:hover' \
-                                      ' {background-color: rgb(208, 208, 208);color: rgb(45, 45, 45);}' \
-                                      'QPushButton:pressed {background-color: rgb(207, 207, 207);}'
+                          ' black;border-radius: 9px;height: 22px;} QPushButton:hover' \
+                          ' {background-color: rgb(208, 208, 208);color: rgb(45, 45, 45);}' \
+                          'QPushButton:pressed {background-color: rgb(207, 207, 207);}'
 
     # обработка нажатий
     def keyPressEvent(self, event):
@@ -241,6 +238,9 @@ class CommonProperties(QMainWindow):
 
     # завершение поиска
     def end_search(self, text='Поиск закончен: 100%'):
+        # Проверяем изменения в настройках
+        self.check_settings()
+
         # проигрываем уведомление
         if self.sound_notification:
             self.player_alert.setVolume(self.volume)
@@ -256,6 +256,15 @@ class CommonProperties(QMainWindow):
         elif self.__class__.__name__ == 'EmailForm':
             self.btn_search_email.setEnabled(True)
             self.btn_search_email.setStyleSheet(self.btn_design.replace('{COLOR}', 'rgb(255, 255, 255)'))
+
+    def check_settings(self):
+        with open('logs/settings.txt') as f:
+            settings = [int(i) for i in f.read().split(';')]
+
+        # запоминаем настройки
+        self.volume = settings[0]
+        self.push_notification = any([settings[1]])
+        self.sound_notification = any([settings[2]])
 
 
 ##########################
@@ -471,7 +480,7 @@ class NumberForm(CommonProperties):
     def closeEvent(self, event):
         # диалог для заккртия
         reply = QMessageBox.question(self, 'Информация', "Вы уверены, что хотите закрыть окно?",
-                                        QMessageBox.Yes, QMessageBox.No)
+                                     QMessageBox.Yes, QMessageBox.No)
         if reply == QMessageBox.Yes:
             # зарываем поток
             self.progressbar_number.terminate()
@@ -534,7 +543,7 @@ class EmailForm(CommonProperties):
     # закрытие приложения
     def closeEvent(self, event):
         reply = QMessageBox.question(self, 'Информация', "Вы уверены, что хотите закрыть окно?",
-                                        QMessageBox.Yes, QMessageBox.No)
+                                     QMessageBox.Yes, QMessageBox.No)
         if reply == QMessageBox.Yes:
             # зарываем поток
             self.multitasking_email.terminate()
@@ -605,9 +614,8 @@ class PhotoForm(CommonProperties):
     def upload(self):
         try:
             # поулчаем путь до фото
-            self.os_name = QFileDialog.getOpenFileName(
-            self, 'Выбрать картинку', '',
-            'Картинка (*.jpg *.png)')[0]
+            self.os_name = QFileDialog.getOpenFileName(self, 'Выбрать картинку', '',
+                                                       'Картинка (*.jpg *.png)')[0]
 
             if self.os_name:  # если фото было выбрано
                 # устанавливаем фотоку и меняем размер
@@ -657,7 +665,7 @@ class PhotoForm(CommonProperties):
     # закрытие приложения
     def closeEvent(self, event):
         reply = QMessageBox.question(self, 'Информация', "Вы уверены, что хотите закрыть окно?",
-                                        QMessageBox.Yes, QMessageBox.No)
+                                     QMessageBox.Yes, QMessageBox.No)
         if reply == QMessageBox.Yes:
             # зарываем поток
             self.progressbar_photo.terminate()
@@ -794,6 +802,6 @@ class ProgressBarThread(QThread):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = LoadingScreen()
-    ex.show()  # показываем загруочный экран
+    load_screen = LoadingScreen()
+    load_screen.show()  # показываем загруочный экран
     sys.exit(app.exec_())
