@@ -253,6 +253,7 @@ class CommonProperties(QMainWindow):
         elif self.__class__.__name__ == 'NumberForm':
             self.btn_search_number.setEnabled(True)
             self.btn_search_number.setStyleSheet(self.btn_design.replace('{COLOR}', 'rgb(255, 255, 255)'))
+            self.change_progress(100)  # + завершение поиска дя телефона
         elif self.__class__.__name__ == 'EmailForm':
             self.btn_search_email.setEnabled(True)
             self.btn_search_email.setStyleSheet(self.btn_design.replace('{COLOR}', 'rgb(255, 255, 255)'))
@@ -421,19 +422,19 @@ class NumberForm(CommonProperties):
 
             for i in range(len(number)):
                 if number[0] == '-' or number[-1] == '-':
-                    raise Error('Неверынй формат')
+                    raise Error('Неверный формат')
 
                 # если быыло две открытых скобки подряд
                 if number[i] == '(' and not is_double:
                     is_double = True
                 elif number[i] == '(' and is_double:
-                    raise Error('Неверынй формат')
+                    raise Error('Неверный формат')
 
                 # ксли было две зкартыых скобки подряд
                 if number[i] == ')' and is_double:
                     is_double = False
                 elif number[i] == ')' and not is_double:
-                    raise Error('Неверынй формат')
+                    raise Error('Неверный формат')
 
                 if number[i] in '0123456789':
                     self.true_number += number[i]
@@ -441,7 +442,7 @@ class NumberForm(CommonProperties):
                 if number[i] == '-':
                     if i < len(number):
                         if number[i + 1] == '-':
-                            raise Error('Неверынй формат')
+                            raise Error('Неверный формат')
 
                 if str(number[i]).lower() in 'qwertyuiopasdfghjklzxcvbnm':
                     raise Error('Неверный формат')
@@ -452,9 +453,10 @@ class NumberForm(CommonProperties):
 
                 # print(self.true_number)
                 self.statusBar.setStyleSheet("color: white")
+                self.change_progress(0)
 
                 # подключаем поток для параллельной обработки
-                self.progressbar_number.progress.connect(self.change_number, QtCore.Qt.QueuedConnection)
+                self.progressbar_number.progress.connect(self.change_progress, QtCore.Qt.QueuedConnection)
                 self.progressbar_number.show_notification.connect(self.start_notification, QtCore.Qt.QueuedConnection)
                 self.progressbar_number.start()  # запускаем
 
@@ -471,14 +473,14 @@ class NumberForm(CommonProperties):
             self.statusBar.setStyleSheet("color: red")
 
     # отображение прогресса
-    def change_number(self, s):
+    def change_progress(self, s):
         self.statusBar.showMessage(f'Начинаем поиск: {str(int(s))}%')
         if s >= 100:
             self.statusBar.showMessage(f'Поиск закончен: 100%')
 
     # закрытие приложения
     def closeEvent(self, event):
-        # диалог для заккртия
+        # диалог для закрытия
         reply = QMessageBox.question(self, 'Информация', "Вы уверены, что хотите закрыть окно?",
                                      QMessageBox.Yes, QMessageBox.No)
         if reply == QMessageBox.Yes:
@@ -514,13 +516,15 @@ class EmailForm(CommonProperties):
     def initUI(self):
         self.statusBar = QStatusBar()
         self.setStatusBar(self.statusBar)
-        self.statusBar.setStyleSheet("background-color: rgb(45, 45, 45); color: white;")
+        self.statusBar.setStyleSheet("color: white;")
 
     # поиск почты
     def search_email(self):
         self.email = self.edit_email.text()  # берём почту
 
-        if self.email.count('@') == 1:
+        if self.email.count('@') == 1 and len(self.email) > 2:
+            self.statusBar.setStyleSheet("color: white;")
+
             # подключаем поток для параллельной обработки
             self.multitasking_email.progress.connect(self.change_progress, QtCore.Qt.QueuedConnection)
             self.multitasking_email.show_notification.connect(self.start_notification, QtCore.Qt.QueuedConnection)
@@ -532,6 +536,7 @@ class EmailForm(CommonProperties):
             self.btn_search_email.setEnabled(False)
             self.btn_search_email.setStyleSheet(self.btn_design.replace('{COLOR}', 'rgb(120, 120, 120)'))
         else:
+            self.statusBar.setStyleSheet("color: red;")
             self.statusBar.showMessage('Неверный формат')
 
     # отображение прогресса

@@ -135,14 +135,17 @@ def download_photo(url, name):
 
 # записываем данные в бд
 def users_add_db(id_users, name, data):
-    # подключаемся
-    con = sqlite3.connect('../data/photo/vk_krasnoyarsk.db', detect_types=sqlite3.PARSE_DECLTYPES)
-    cur = con.cursor()
-
-    cur.execute('''INSERT INTO users_man(id_user, name, data, url_foto) VALUES (?, ?, ?, ?)''',
-                (id_users, name, json.dumps(np.array(data).tolist()),  json.dumps(np.array(url).tolist())))
-    con.commit()
-    con.close()
+    try:  # если такой id есть
+        # подключаемся
+        con = sqlite3.connect('../data/photo/vk_krasnoyarsk.db', detect_types=sqlite3.PARSE_DECLTYPES)
+        cur = con.cursor()
+        print('add new person - ID', id_users)
+        cur.execute('''INSERT INTO users_man(id_user, name, data, url_foto) VALUES (?, ?, ?, ?)''',
+                    (id_users, name, json.dumps(np.array(data).tolist()),  json.dumps(np.array(url).tolist())))
+        con.commit()
+        con.close()
+    except Exception:
+        print('такой Id сущ')
 
 
 if __name__ == '__main__':
